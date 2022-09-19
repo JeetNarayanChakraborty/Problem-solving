@@ -1,7 +1,6 @@
 
 /*Given a stream of elements too large to store in memory, 
-pick a random element from the stream with uniform probability. */
-
+pick k random elements from the stream with uniform probability. */
 
 
 
@@ -36,24 +35,37 @@ public class Main
 		}
 		
 		
-		reservoir.add(stream.get(0));            //first f elements from stream here(f = 1)
-		
-		
-		
-		for(i=1; i<stream.size(); i++)
+	    System.out.print("How many elements to pick ? ");
+	    t = s.nextInt();
+	    
+	    
+	    for(i=0; i<t; i++)
+	    {
+	        reservoir.add(stream.get(i));       //Adding first k elements from Stream
+	    }
+	    
+	    c = t;
+	    
+	    
+		for(i=t; i<stream.size(); i++)
 		{
-		    t = (int)Math.random() * (i - 0 + 1) + 0;  // Pick Random element from range and compare it with element 
-		                                         // reservoir
+		    t = (int)Math.random() * (i+1);      // Generate random number from range and check whether <= Reservoir size.  
 		    
 		    if(t <= reservoir.size())
 		    {
-		        reservoir.set(t, stream.get(t));
+		        reservoir.set(t, stream.get(i));
 		    }
 		}
 		
 		
 		
 		
-		System.out.println("Random element from stream :" + reservoir.get(t));
+		System.out.print("\nRandom " + c + " elements from stream :");
+		
+		
+		for(i=0; i<reservoir.size(); i++)
+		{
+		    System.out.print(reservoir.get(i) + " ");
+		}
 	}
 }
