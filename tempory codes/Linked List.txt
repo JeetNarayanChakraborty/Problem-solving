@@ -1,0 +1,32 @@
+		
+    
+    //Function to reverse linked List using recursion
+    //Errors - throwing nullPointerException
+    
+    
+    
+    
+    
+    p = head;
+		q = null;
+		
+		
+    
+		if(p.next != null)
+		{
+			//System.out.println("q at :" + q.data);
+			
+			if(p.next != null)
+			{
+				q = head;
+			}
+			
+			//System.out.println("q at :" q.data);
+			
+			recurReverseList(p.next);
+			
+			p.next = q;
+			
+			
+			
+			System.out.println("p at :" + p.data);
